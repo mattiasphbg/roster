@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BacklogIndexRouteImport } from './routes/backlog/index'
+import { Route as BacklogItemsItemRouteImport } from './routes/backlog/$items/item'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const BacklogIndexRoute = BacklogIndexRouteImport.update({
   path: '/backlog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BacklogItemsItemRoute = BacklogItemsItemRouteImport.update({
+  id: '/backlog/$items/item',
+  path: '/backlog/$items/item',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/backlog': typeof BacklogIndexRoute
+  '/backlog/$items/item': typeof BacklogItemsItemRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/backlog': typeof BacklogIndexRoute
+  '/backlog/$items/item': typeof BacklogItemsItemRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/backlog/': typeof BacklogIndexRoute
+  '/backlog/$items/item': typeof BacklogItemsItemRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/backlog'
+  fullPaths: '/' | '/backlog' | '/backlog/$items/item'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/backlog'
-  id: '__root__' | '/' | '/backlog/'
+  to: '/' | '/backlog' | '/backlog/$items/item'
+  id: '__root__' | '/' | '/backlog/' | '/backlog/$items/item'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BacklogIndexRoute: typeof BacklogIndexRoute
+  BacklogItemsItemRoute: typeof BacklogItemsItemRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BacklogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/backlog/$items/item': {
+      id: '/backlog/$items/item'
+      path: '/backlog/$items/item'
+      fullPath: '/backlog/$items/item'
+      preLoaderRoute: typeof BacklogItemsItemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BacklogIndexRoute: BacklogIndexRoute,
+  BacklogItemsItemRoute: BacklogItemsItemRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
