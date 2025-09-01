@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles/app.css?url";
+import { Header } from "@/components/header";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -35,6 +36,7 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
+      <Header />
       <Outlet />
     </RootDocument>
   );
