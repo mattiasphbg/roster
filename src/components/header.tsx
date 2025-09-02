@@ -24,11 +24,19 @@ export const Header = () => {
           <span className="text-xl font-bold text-foreground">GoalTracker</span>
         </div>
         <nav className="hidden md:flex items-center space-x-6">
-          <NavigationMenu>
+          <NavigationMenu viewport={false}>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground transition-colors">
+                <NavigationMenuTrigger className="">
                   Calendar
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <NavigationMenuLink>Link</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="">
+                  Complete
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <NavigationMenuLink>Link</NavigationMenuLink>
@@ -43,11 +51,20 @@ export const Header = () => {
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground transition-colors">
+                <NavigationMenuTrigger className="">
                   Focus
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <NavigationMenuLink>Link</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="">
+                  Project list
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <NavigationMenuLink>Projects</NavigationMenuLink>
+                  <NavigationMenuLink>Mall used</NavigationMenuLink>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
