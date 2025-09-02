@@ -8,10 +8,12 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
 import { Button } from "./ui/button";
+import { Link } from "@tanstack/react-router";
 
 export const Header = () => {
   return (
@@ -27,6 +29,22 @@ export const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground transition-colors">
                   Calendar
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <NavigationMenuLink>Link</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <Link to="/">Backlog</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground transition-colors">
+                  Focus
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <NavigationMenuLink>Link</NavigationMenuLink>
