@@ -1,5 +1,16 @@
 import { Target } from "lucide-react";
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+
 import { Button } from "./ui/button";
 
 export const Header = () => {
@@ -11,24 +22,18 @@ export const Header = () => {
           <span className="text-xl font-bold text-foreground">GoalTracker</span>
         </div>
         <nav className="hidden md:flex items-center space-x-6">
-          <a
-            href="#features"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Features
-          </a>
-          <a
-            href="#testimonials"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Testimonials
-          </a>
-          <a
-            href="#pricing"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Pricing
-          </a>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground transition-colors">
+                  Calendar
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <NavigationMenuLink>Link</NavigationMenuLink>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
           <Button variant="outline" size="sm">
             Sign In
           </Button>
